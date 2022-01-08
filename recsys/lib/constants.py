@@ -31,6 +31,9 @@ LIGHTGCN_ID = "lightgcn"
 VOWPAL_WABBIT_ID = "vowpal_wabbit"
 WIDE_AND_DEEP_ID = "wide_and_deep"
 
+# Initialization functions
+INIT_TNORMAL = "tnormal"
+
 # Activation functions
 ACT_SIGMOID = "sigmoid"
 ACT_TANH = "tanh"
@@ -43,12 +46,36 @@ LOSS_WARP = "warp"
 LOSS_LOGISTIC = "logistic"
 LOSS_BPR = "bpr"
 LOSS_WARP_KOS = "warp-kos"
+LOSS_SOFTMAX = "softmax"
+LOSS_LOG = "log_loss"
+LOSS_CROSS_ENTROPY = "cross_entropy_loss"
+LOSS_SQUARE = "square_loss"
 
 # Optimizers
+OPT_ADAM = "adam"
 OPT_ADADELTA = "adadelta"
 OPT_ADAGRAD = "adagrad"
+OPT_SQD = "sqd"
+OPT_FTRL = "ftrl"
+OPT_GD = "gd"
+OPT_PADAGRAD = "padagrad"
+OPT_PGD = "pgd"
+OPT_RMSPROP = "rmsprop"
 
 # Likelihoods
 LIKELIHOOD_BERN = "bern"
 LIKELIHOOD_GAUS = "gaus"
 LIKELIHOOD_POIS = "pois"
+
+# Metrics
+METRIC_AUC = "auc"
+METRIC_GROUP_AUC = "group_auc"
+METRIC_LOGLOSS = "logloss"
+METRIC_MAP = "map"
+METRIC_MEAN_MRR = "mean_mrr"
+METRIC_NDCG = "ndcg"
+METRIC_PRECISION = "precision"
+METRIC_RECALL = "recall"
+
+# IO
+DATA_PATH = "data/"

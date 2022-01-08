@@ -23,8 +23,9 @@ from lib.constants import (
     WIDE_AND_DEEP_ID,
 )
 from lib.models.base import RecommenderModel
-from lib.models.bivae import RecommenderBiVAE
 from lib.models.bpr import RecommenderBPR
+from lib.models.bivae import RecommenderBiVAE
+from lib.models.sli_rec import RecommenderSLI_REC
 from lib.models.lightfm import RecommenderLightFM
 
 
@@ -34,10 +35,7 @@ MODELS: List[RecommenderModel] = [
         id=NRMS_ID, name="Neural Recommendation with Multi-Head Self-Attention (NRMS)"
     ),
     RecommenderBiVAE,
-    RecommenderModel(
-        id=SLI_REC_ID,
-        name="Short-term and Long-term Preference Integrated Recommender (SLi-Rec)",
-    ),
+    RecommenderSLI_REC,
     RecommenderModel(id=SUM_ID, name="Sequential User Modeling (SUM)"),
     RecommenderModel(id=GRU4REC_ID, name="Gru4Rec"),
     RecommenderLightFM,

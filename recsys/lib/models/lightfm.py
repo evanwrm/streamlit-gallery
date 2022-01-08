@@ -13,7 +13,6 @@ from recommenders.utils.constants import SEED
 
 from lib.constants import (
     DEFAULT_COL_PREDICTIONS,
-    DEFAULT_COL_RATING,
     LIGHTFM_ID,
     DEFAULT_COL_ITEM,
     DEFAULT_COL_USER,
@@ -110,6 +109,20 @@ class RecommenderLightFM(RecommenderModel):
             st.write(all_predictions.head())
 
         return all_predictions
+
+    def similar_users(
+        self, user_id: int, config: Union[Dict, None] = None
+    ) -> pd.DataFrame:
+        return lightfm_utils.similar_users(
+            user_id=user_id, user_features=config["user_features"], model=self._model
+        )
+
+    def similar_items(
+        self, item_id: int, config: Union[Dict, None] = None
+    ) -> pd.DataFrame:
+        return lightfm_utils.similar_items(
+            itme_id=item_id, user_features=config["item_features"], model=self._model
+        )
 
     def split_data(
         self,

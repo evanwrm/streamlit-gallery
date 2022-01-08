@@ -7,7 +7,12 @@ import streamlit as st
 from recommenders.utils.timer import Timer
 from recommenders.datasets.python_splitters import python_random_split
 
-from lib.constants import DEFAULT_COL_ITEM, DEFAULT_COL_RATING, DEFAULT_COL_USER
+from lib.constants import (
+    DEFAULT_COL_ITEM,
+    DEFAULT_COL_RATING,
+    DEFAULT_COL_TIMESTAMP,
+    DEFAULT_COL_USER,
+)
 
 
 @dataclass
@@ -47,11 +52,28 @@ class RecommenderModel:
             "RecommenderModel with ID {self.id} has no implemented predict method!"
         )
 
+    @abstractmethod
+    def similar_users(
+        self, user_id: int, config: Union[Dict, None] = None
+    ) -> pd.DataFrame:
+        raise NotImplementedError(
+            "RecommenderModel with ID {self.id} has no implemented similar_users method!"
+        )
+
+    @abstractmethod
+    def similar_items(
+        self, item_id: int, config: Union[Dict, None] = None
+    ) -> pd.DataFrame:
+        raise NotImplementedError(
+            "RecommenderModel with ID {self.id} has no implemented similar_items method!"
+        )
+
     def split_data(
         self,
         data: pd.DataFrame,
         uir_cols: List[str],
         ratio: float = 0.75,
+        col_timestamp: str = DEFAULT_COL_TIMESTAMP,
         user_features: Tuple[List, List] = None,
         item_features: Tuple[List, List] = None,
         verbose=True,
@@ -66,12 +88,12 @@ class RecommenderModel:
             Columns that contain the user-item-rating information
         ratio : float
             Ratio of the training dataset to split
-        col_user : str
-            Column name of the user id
-        col_item : str
-            Column name of the item id
-        col_rating : str
-            Column name of the rating
+        col_timestamp : str
+            Column name of the timestamp
+        user_features : Tuple[List, List]
+            Tuple containing a list of all user features, and a list of user features corresponding to each user
+        item_features : Tuple[List, List]
+            Tuple containing a list of all item features, and a list of item features corresponding to each item
         verbose : bool
             Whether to print out the time taken to split the training data
 

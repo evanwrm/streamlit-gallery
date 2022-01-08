@@ -56,7 +56,7 @@ def bin_feature(
 
 def type_to_streamlit_element(field: Field, sidebar=True, warn=True):
     name = field.name
-    value = field.default or field.default_factory()
+    value = field.default if field.default is not None else field.default_factory()
 
     if field.type is int or field.type is float:
         if sidebar:
