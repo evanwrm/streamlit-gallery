@@ -1,0 +1,51 @@
+channels:
+    - defaults
+    - conda-forge
+    - plotly
+    - pytorch
+    - huggingface
+    - fastai
+    - xformers/label/dev
+    - nvidia
+dependencies:
+    # Language
+    - python>=3.8
+    - pip
+    # Common
+    - numpy
+    - pandas
+    - scipy
+    - tqdm
+
+    # Visualization
+    - matplotlib
+    - seaborn
+    - plotly::plotly
+
+    # ML
+    - scikit-learn
+    - pytorch::pytorch
+    - pytorch::torchvision
+    # - pytorch::torchaudio
+    - pytorch::pytorch-cuda=11.7
+    - libcufile=1.4.0.31 # https://github.com/mamba-org/mamba/issues/2167
+    - huggingface::transformers
+    - huggingface::safetensors
+    - diffusers
+    - fastai::accelerate
+    - xformers
+
+    # Webservers
+    - streamlit>=1.15
+
+    # - pip:
+
+    ## Development
+    # Environment
+    - jupyterlab
+    - ipython
+
+    # Quality
+    - black>=22
+    - isort
+    - flake8
